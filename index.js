@@ -1,15 +1,16 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const Chat = require('./models/chat');
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+app.use(express.static(path.join(__dirname, "public")));
 
 const mongoose = require('mongoose');
-
 main()
     .then(() => {
-        console.log('Connected to DATABASE')            
+        console.log('Connected to DATABASE')
     })
     .catch((err) => {
         console.log(err)
@@ -24,8 +25,14 @@ app.listen(port, () => {
     console.log(`Server is running on port -> ${port}`);
 });
 
-app.get('/', (req, res) => {
+app.get('/', (req,res) => {
     console.log('Received a request');
+    res.send('working');
 });
 
+app.get('/chats', async (req,res)=>{
+    let chats = await Chat.find();
+    console.log(chats);
+    res.render('index.ejs',{chats})
+})
 
