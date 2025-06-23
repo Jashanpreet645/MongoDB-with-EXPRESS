@@ -1,0 +1,64 @@
+/* Animated, layered blobs using divs and border-radius */
+.background-decor {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.blob {
+    position: absolute;
+    opacity: 0.45;
+    filter: blur(2px);
+    mix-blend-mode: lighten;
+    border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%;
+    transition: border-radius 1s;
+}
+
+.blob1 {
+    width: 420px; height: 420px;
+    top: -90px; left: -120px;
+    background: linear-gradient(135deg, #6ee7b7 0%, #a7f3d0 100%);
+    animation: blobFloat1 18s ease-in-out infinite alternate;
+}
+.blob2 {
+    width: 340px; height: 340px;
+    bottom: -80px; right: -110px;
+    background: linear-gradient(135deg, #bbf7d0 0%, #22d3ee 100%);
+    animation: blobFloat2 20s ease-in-out infinite alternate;
+}
+.blob3 {
+    width: 220px; height: 220px;
+    top: 60%; left: -60px;
+    background: linear-gradient(135deg, #34d399 0%, #6ee7b7 100%);
+    opacity: 0.32;
+    animation: blobFloat3 16s ease-in-out infinite alternate;
+}
+.blob4 {
+    width: 180px; height: 180px;
+    top: 10%; right: 10%;
+    background: linear-gradient(135deg, #4ade80 0%, #bbf7d0 100%);
+    opacity: 0.28;
+    animation: blobFloat4 22s ease-in-out infinite alternate;
+}
+
+@keyframes blobFloat1 {
+    0%   { transform: translate(0, 0) scale(1) rotate(0deg); border-radius: 42% 58% 60% 40% / 50% 40% 60% 50%; }
+    50%  { transform: translate(30px, 40px) scale(1.08) rotate(8deg); border-radius: 58% 42% 40% 60% / 60% 50% 40% 50%; }
+    100% { transform: translate(0, 0) scale(1) rotate(-6deg); border-radius: 40% 60% 60% 40% / 50% 60% 40% 50%; }
+}
+@keyframes blobFloat2 {
+    0%   { transform: translate(0, 0) scale(1) rotate(0deg); border-radius: 60% 40% 60% 40% / 50% 60% 40% 50%; }
+    50%  { transform: translate(-25px, -30px) scale(1.12) rotate(-10deg); border-radius: 40% 60% 40% 60% / 60% 40% 60% 40%; }
+    100% { transform: translate(0, 0) scale(1) rotate(7deg); border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%; }
+}
+@keyframes blobFloat3 {
+    0%   { transform: translate(0, 0) scale(1) rotate(0deg); border-radius: 50% 50% 60% 40% / 60% 50% 50% 40%; }
+    50%  { transform: translate(18px, -22px) scale(0.98) rotate(12deg); border-radius: 60% 40% 50% 50% / 40% 60% 50% 50%; }
+    100% { transform: translate(0, 0) scale(1) rotate(-8deg); border-radius: 50% 60% 40% 50% / 60% 50% 40% 50%; }
+}
+@keyframes blobFloat4 {
+    0%   { transform: translate(0, 0) scale(1) rotate(0deg); border-radius: 55% 45% 60% 40% / 50% 60% 40% 50%; }
+    50%  { transform: translate(-16px, 19px) scale(1.08) rotate(-7deg); border-radius: 45% 55% 40% 60% / 60% 40% 60% 40%; }
+    100% { transform: translate(0, 0) scale(1) rotate(5deg); border-radius: 60% 40% 50% 50% / 50% 60% 40% 60%; }
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MESSENGER-edit msg</title>
+    <link rel="stylesheet" href="/editstyle.css">
+    <link rel="stylesheet" href="/background.css">
+    <link rel="stylesheet" href="/navbar.css">
+</head>
+<body>
+    <div class="background-decor">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+        <div class="blob blob4"></div>
+    </div>
+    <nav class="navbar glass">
+        <div class="nav-logo">
+            <h1>MESSENGER</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/chats" class="active">Chats</a></li>
+            <li><form method="get">
+                <a href="/chats/new">New Chat</a>
+            </form></li>
+            <li><a href="/">Logout</a></li>
+        </ul>
+    </nav>
+
+<div class="main glass edit-glass">
+    <h2>Edit Message</h2>
+    <form method="post" action="/chats/<%= chat._id %>?_method=PUT">
+        <div class="form-group">
+            <label for="from">From:</label>
+            <input type="text" id="from" name="from" value="<%= chat.from %>" required>
+        </div>
+        <div class="form-group">
+            
+            <label for="to">To:</label>
+            <input type="text" id="to" name="to" value="<%= chat.to %>" required>
+        </div>
+        <div class="form-group">
+            <label for="msg">Message:</label>
+            <textarea id="msg" name="msg" required><%= chat.msg %></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Update Message</button>
+    </form>
+</div>
+
+</body>
+</html>

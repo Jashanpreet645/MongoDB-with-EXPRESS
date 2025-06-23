@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MESSENGER - Chats</title>
+    <link rel="stylesheet" href="/chatstyle.css">
+    <link rel="stylesheet" href="/background.css">
+    <link rel="stylesheet" href="/navbar.css">
+</head>
+<body>
+    <div class="background-decor">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+        <div class="blob blob4"></div>
+    </div>
+    <nav class="navbar glass">
+        <div class="nav-logo">
+            <h1>MESSENGER</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/chats" class="active">Chats</a></li>
+            <li><form method="get">
+                <a href="/chats/new">New Chat</a>
+            </form></li>
+            <li><a href="/">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="main glass chat-glass">
+        <h2>All Chats</h2>
+        <% if (chats && chats.length > 0) { %>
+            <div class="chat-list">
+                <% chats.forEach(chat => { %>
+                    <article class="chat-card">
+                        <div class="chat-info">
+                            <div class="chat-sender">
+                            <span class="label">From:</span>
+                            <span class="from-name"><%= chat.from %></span>
+                            </div>
+                            <div class="chat-reciver">
+                                <span class="label">To:</span>
+                                <span class="to-name"><%= chat.to %></span>
+                            </div>
+                        </div>
+                        <div class="msg">
+                            <p><%= chat.msg %></p>
+                            <span class="btns">
+                                <form method="get" action="/chats/<%= chat._id %>/edit">
+                                <button type="submit" class="edit-btn">EDIT</button>
+                                </form>
+
+                                <form method="post" action="/chats/<%= chat._id %>?_method=DELETE">
+                                <button type="submit" class="edit-btn">DELETE</button>
+                                </form>
+                            </span>
+                        </div>
+                        <div class="chat-date">
+                            <span class="label">Time:
+                            <span class="time"><%= chat.created_at.toString().split(' ') [4]%></span>
+                            </span>
+                            <br>
+                            <span class="label">Date:
+                            <span class="date"><%= chat.created_at.toString().split(' ').slice(1,4).join("-")%></span>
+                            <span class="date"><%= chat.created_at.toString().split(' ')[0]%></span>
+                            </span>
+                        </div>
+                    </article>
+                <% }); %>
+        <% } else { %>
+            <p class="no-chats">No chats available.</p>
+        <% } %>
+    </div>
+</body>
+</html>

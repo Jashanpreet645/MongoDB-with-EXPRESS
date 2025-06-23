@@ -1,0 +1,185 @@
+ html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    width: 100vw;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #d1fae5 0%, #bbf7d0 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Glassmorphic chat container */
+.main.glass.chat-glass {
+    position: relative;
+    z-index: 2;
+    max-width: 540px;
+    width: 94vw;
+    background: rgba(255,255,255,0.28);
+    box-shadow: 0 8px 32px rgba(34,197,94,0.18), 0 1.5px 8px rgba(0,0,0,0.03);
+    border-radius: 28px;
+    padding: 0rem 2rem 2rem 2rem;
+    text-align: center;
+    backdrop-filter: blur(15px);
+    border: 1.5px solid rgba(34,197,94,0.18);
+    transition: box-shadow 0.25s;
+    animation: fadeInMain 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+    margin-top: 80px;
+    /* margin-bottom: 20px; */
+}
+
+@keyframes fadeInMain {
+    0% { opacity: 0; transform: scale(0.97) translateY(30px);}
+    100% { opacity: 1; transform: scale(1) translateY(0);}
+}
+
+h2 {
+    color: #22c55e;
+    font-size: 2.3rem;
+    margin-bottom: 2rem;
+    letter-spacing: 2px;
+    font-weight: 800;
+    text-align: center;
+    text-shadow: 0 2px 12px rgba(34,197,94,0.07);
+}
+
+.chat-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.chat-card {
+    background: #f8fafc;
+    border-radius: 16px;
+    box-shadow: 0 2px 14px rgba(34,197,94,0.10);
+    padding: 1.25rem 1.5rem;
+    transition: box-shadow 0.2s, transform 0.2s;
+    border-left: 6px solid #22c55e;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    position: relative;
+    z-index: 2;
+}
+
+.chat-card:hover {
+    box-shadow: 0 8px 32px rgba(34,197,94,0.16);
+    transform: translateY(-2px) scale(1.012);
+    background: #e0f7ef;
+}
+
+.chat-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-sender{
+    font-size: 1.08rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
+.chat-reciver {
+    font-size: 1.08rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
+.chat-date {
+    font-size: 1.08rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    justify-content: space-between;
+}
+
+.label {
+    color: #22c55e;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.from-name, .to-name, .date, .time{
+    font-weight: bold;
+    color: #222;
+    letter-spacing: 0.2px;
+}
+
+.msg {
+    background: #e0f7ef;
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 1.13rem;
+    color: #222;
+    margin: 0.5rem 0;
+    word-break: break-word;
+    line-height: 1.6;
+    
+}
+.msg .btns{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.no-chats {
+    text-align: center;
+    color: #888;
+    font-size: 1.15rem;
+    margin-top: 2rem;
+}
+
+.edit-btn {
+    background: linear-gradient(90deg, #22c55e 0%, #4ade80 100%);
+    color: #fff;
+    font-size: 0.98rem;              /* Smaller font */
+    font-weight: 600;
+    padding: 0.38rem 1.2rem;         /* Less vertical/horizontal padding */
+    border: none;
+    border-radius: 999px;
+    margin-top: 0.3rem;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(34,197,94,0.10);
+    transition: background 0.2s, box-shadow 0.2s, transform 0.18s;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    line-height: 1.1;
+}
+.edit-btn:hover, .edit-btn:focus {
+    background: linear-gradient(90deg, #16a34a 0%, #22d3ee 100%);
+    box-shadow: 0 4px 16px rgba(34,197,94,0.18);
+    transform: translateY(-2px) scale(1.04);
+}
+
+@media (max-width: 700px) {
+    .main.glass.chat-glass,
+    .header.glass {
+        max-width: 99vw;
+        padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+    }
+    h2 { font-size: 1.3rem; }
+    .chat-card { padding: 1rem 0.7rem; }
+    .header.glass h1 { font-size: 1.3rem; }
+    .edit-btn {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.9rem;
+    }
+}
+
