@@ -8,11 +8,12 @@
 
 .blob {
     position: absolute;
-    opacity: 0.45;
-    filter: blur(2px);
+    opacity: 0.55;
+    filter: blur(1px);
     mix-blend-mode: lighten;
     border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%;
     transition: border-radius 1s;
+    -webkit-filter: blur(1px);
 }
 
 .blob1 {
