@@ -3,6 +3,7 @@ const app = express();
 const path = require('path');
 const Chat = require('./models/chat');
 const methodOverride = require('method-override');
+const ExpressError = require('./ExpressError');
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -34,9 +35,14 @@ app.get('/', (req,res) => {
 });
 []
 app.get('/chats', async (req,res)=>{
+    try{
     let chats = await Chat.find();
     console.log(chats);
     res.render('chatpage.ejs',{chats})
+    }
+    catch(err){
+        next(err);
+    }
 })
 
 app.get(('/chats/new'), (req,res)=>{
@@ -104,3 +110,8 @@ app.delete('/chats/:id', (req,res)=>{
             res.status(500).send('Internal Server Error');
         });
 })
+
+app.use((err, req, res, next) => {
+    let {statusCode = 500, message = 'Something went wrong!'} = err;
+    res.status(status).send(`<h1>${statusCode} - ${message}</h1>`); 
+});
